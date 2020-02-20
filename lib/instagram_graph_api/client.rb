@@ -10,5 +10,6 @@ module InstagramGraphApi
     include InstagramGraphApi::Client::Hashtag
     include InstagramGraphApi::Client::HashtagSearch
     include InstagramGraphApi::Client::Tags
+    include InstagramGraphApi::Client::Stories
   end
 end
