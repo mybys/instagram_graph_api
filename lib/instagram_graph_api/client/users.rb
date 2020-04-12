@@ -33,7 +33,11 @@ module InstagramGraphApi
 
       def get_account_insights(ig_account_id, period = 'day', since_time, until_time, metrics: nil)
         metrics ||= ACCOUNT_METRIC_HASH[period.to_sym]
-        get_connections(ig_account_id, "insights?metric=#{metrics}&since=#{since_time.to_i}&untile=#{until_time.to_i}&period=#{period}")
+        if period == 'lifetime'
+          get_connections(ig_account_id, "insights?metric=#{metrics}&period=#{period}")
+        else
+          get_connections(ig_account_id, "insights?metric=#{metrics}&since=#{since_time.to_i}&until=#{until_time.to_i}&period=#{period}")
+        end
       end
 
       private
